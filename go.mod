@@ -1,4 +1,4 @@
-module x.x/gologger
+module github.com/pedeveaux/gologger
 
 go 1.14
 

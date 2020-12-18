@@ -1,0 +1,14 @@
+{
+    "logConfig": {
+        "EnableConsole": true,
+        "ConsoleLevel": "logger.Debug",
+        "ConsoleJSONFormat": false,
+        "EnableFile": true,
+        "FileLevel": "logger.Info",
+        "FileJSONFormat": true,
+        "FileLocation": "program.log",
+        "MaxSize": 10,
+        "Compress": true,
+        "MaxAge": 90
+    }
+}

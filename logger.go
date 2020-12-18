@@ -27,7 +27,7 @@ const (
 	//InstanceZapLogger is an instance of the zap logger
 	InstanceZapLogger int = iota
 	//InstanceLogrusLogger is an instance of the logrus logger
-	InstanceLogrusLogger
+	InstanceLogrusLogger int = 2
 )
 
 var (

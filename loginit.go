@@ -8,20 +8,6 @@ import (
 
 //Config defines the struct for the application configuration
 type Config struct {
-	Database struct {
-		Host     string `json:"host"`
-		Port     string `json:"port"`
-		User     string `json:"user"`
-		Password string `json:"password"`
-		DBName   string `json:"dbname"`
-	} `json:"database"`
-	RabbitMQ struct {
-		Host     string `json:"host"`
-		Port     string `json:"port"`
-		User     string `json:"user"`
-		Password string `json:"password"`
-		Exchange string `json:"exchange"`
-	} `json:"rabbitmq"`
 	LogConfig struct {
 		EnableConsole     bool   `json:"enableConsole"`
 		ConsoleLevel      string `json:"consoleLevel"`
@@ -52,13 +38,20 @@ func LoadConfiguration(filename string) (config Config, err error) {
 func InitLogger() Logger {
 
 	config, err := LoadConfiguration("config.json")
-	log.Fatalf("Failed to load configuration: %s", err.Error())
+	if err != nil{
+		log.Fatalf("Failed to load configuration: %s", err.Error())
+	}
 	logconfig := config.LogConfig
 
 	err = NewLogger(logconfig, InstanceZapLogger)
 	if err != nil {
 		log.Fatalf("Could not instantiate log %s", err.Error())
 	}
+
+	// err = NewLogger(logconfig, InstanceLogrusLogger)
+	// if err != nil {
+	// 	log.Fatalf("Could not instantiate log %s", err.Error())
+	// }
 
 	// contextLogger := WithFields(Fields{"key1": "value1"})
 
